@@ -4,12 +4,12 @@ class BooksController < ApplicationController
   include Params::BookParams
 
   def index
-    @objects = Books::List.call
-    render json: @objects, status: :ok
+    @books = Books::List.call
+    render json: @books, status: :ok
   end
 
   def show
-    @object = Books::Find.new(code: book_id).call
-    render json: @object, status: :ok
+    @book = Books::Find.new(code: book_id).call
+    render json: @book, status: :ok
   end
 end
