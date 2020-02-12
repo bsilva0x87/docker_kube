@@ -1,0 +1,12 @@
+  
+no_browser: true
+formats:
+  - console
+paths:
+  - 'app/channels/'
+  - 'app/controllers/'
+  - 'app/jobs/'
+  - 'app/mailers/'
+  - 'app/models/'
+  - 'app/serializers/'
+  - 'app/services/'
