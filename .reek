@@ -18,4 +18,3 @@ directories:
 # Excluding directories configuration
 exclude_paths:
   - db/schema.rb
-  - spec/models/**/*.rb
