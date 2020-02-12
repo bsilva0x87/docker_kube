@@ -1,0 +1,22 @@
+---
+books:
+  - 
+    title: "Clean Code: A Handbook of Agile Software Craftsmanship"
+    author: "Robert C. Martin"
+    code: "B001GSTOAM"
+    language: "English"
+  - 
+    title: "The Clean Coder: A Code of Conduct for Professional Programmers"
+    author: "Robert C. Martin"
+    code: "B0050JLC9Y"
+    language: "English"
+  - 
+    title: "The Pragmatic Programmer: your journey to mastery"
+    author: "David Thomas, Andrew Hunt"
+    code: "B07VRS84D1"
+    language: "English"
+  - 
+    title: "The Mythical Man-Month: Essays on Software Engineering"
+    author: "Frederick P. Brooks Jr."
+    code: "B00B8USS14"
+    language: "English"
