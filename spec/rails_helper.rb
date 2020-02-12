@@ -7,11 +7,17 @@ ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../config/environment', __dir__)
 
-abort('The Rails environment is running in production mode!') if production?
+if Rails.env.production?
+  abort('The Rails environment is running in production mode!')
+end
+
 require 'rspec/rails'
 
 begin
-  ActiveRecord::Migration.maintain_test_schema!
+  ActiveRecord::Base
+    .establish_connection(adapter: 'sqlite3', database: ':memory:')
+  ActiveRecord::Schema.verbose = false
+  load "#{Rails.root}/db/schema.rb"
 rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
@@ -24,6 +30,6 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 end
 
-def production?
-  Rails.env.production?
-end
+require 'support/database_cleaner'
+require 'support/factory_bot'
+require 'support/shoulda_matchers'
