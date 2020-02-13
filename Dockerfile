@@ -1,18 +1,18 @@
 FROM ruby:2.6.5
 
-RUN apt-get update -qq && apt-get install -y nodejs
-RUN mkdir /docker_kube
+RUN apt-get update -qq && apt-get install -y build-essential
+RUN apt-get install -y libpq-dev \
+                       libxml2-dev libxslt1-dev \
+                       nodejs
+RUN gem install bundler:2.1.2
 
-WORKDIR /docker_kube
+ENV RAILS_ENV production
+ENV APP_HOME /docker_kube
 
-COPY Gemfile /docker_kube/Gemfile
-COPY Gemfile.lock /docker_kube/Gemfile.lock
+RUN mkdir -p $APP_HOME
+WORKDIR $APP_HOME
+
+ADD Gemfile* $APP_HOME/
 RUN bundle install
-COPY . /docker_kube
 
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
-EXPOSE 3000
-
-CMD ["rails", "server", "-b", "0.0.0.0"]
+ADD . $APP_HOME
