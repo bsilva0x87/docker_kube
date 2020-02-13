@@ -11,5 +11,8 @@ services:
             - "3000:3000"
         links:
             - db
+            - redis
         volumes:
             - .:/docker_kube
+    redis:
+        image: redis
